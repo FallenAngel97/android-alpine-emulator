@@ -25,7 +25,11 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build docker image
-      run: |
-        nix build .#docker.x86_64-linux
-        docker image ls
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      env:
+        DOCKER_BUILDKIT: 1
+      with:
+        push: false
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
