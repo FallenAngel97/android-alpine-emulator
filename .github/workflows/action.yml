@@ -37,5 +37,6 @@ jobs:
     - name: Squash all docker layers
       run: |
           pip install docker-squash
+          echo "docker-squash -t ${{ steps.meta.outputs.labels }}:squashed ${{ steps.docker_build.outputs.imageid }} "
           docker-squash -t ${{ steps.meta.outputs.labels }}:squashed ${{ steps.docker_build.outputs.imageid }}
           docker push ${{ steps.meta.outputs.labels }}:squashed 
