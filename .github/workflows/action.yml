@@ -27,9 +27,15 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build and push
       uses: docker/build-push-action@v2
+      id: docker_build
       env:
         DOCKER_BUILDKIT: 1
       with:
         push: false
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+    - name: Squash all docker layers
+      run: |
+          pip install docker-squash
+          docker-squash -t ${{ steps.meta.outputs.labels }}:squashed ${{ steps.docker_build.outputs.imageid }}
+          docker push ${{ steps.meta.outputs.labels }}:squashed 
