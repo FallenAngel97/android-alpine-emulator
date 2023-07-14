@@ -3,8 +3,8 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && echo "y" | sdkmanager --licenses \
  && echo no | avdmanager create avd --force \
         --name lowEndOreo \
-        --abi google_apis/armeabi-v7a \
-        --package 'system-images;android-26;google_apis;armeabi-v7a' \
+        --abi google_apis/arm64-v8a \
+        --package 'system-images;android-26;google_apis;arm64-v8a' \
         --device '2.7in QVGA' \
  && wget https://github.com/upx/upx/releases/download/v4.0.2/upx-4.0.2-amd64_linux.tar.xz \
  && sed -i '/hw.audioInput=yes/c\hw.audioInput=no' /root/.android/avd/lowEndOreo.avd/config.ini \
