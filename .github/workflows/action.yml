@@ -35,11 +35,9 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
     - name: Squash all docker layers
-      uses: FallenAngel97/squash-docker@v1
+      uses: FallenAngel97/squash-docker@v1.1
       with:
-        milliseconds: 10
         tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
       id: squash-step
         #run: |
         #    pip install docker-squash
