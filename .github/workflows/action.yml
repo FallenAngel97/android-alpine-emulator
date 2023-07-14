@@ -37,12 +37,7 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         outputs: type=docker,dest=/tmp/myimage.tar
     - name: Squash all docker layers
-      uses: FallenAngel97/squash-docker@v1.3
+      uses: FallenAngel97/squash-docker@v1.4
       with:
         tags: ${{ steps.meta.outputs.tags }}
       id: squash-step
-        #run: |
-        #    pip install docker-squash
-        #    echo "docker-squash -t ${{ steps.meta.outputs.labels }}:squashed ${{ steps.docker_build.outputs.imageid }} "
-        #    docker-squash -t ${{ steps.meta.outputs.labels }}:squashed ${{ steps.docker_build.outputs.imageid }}
-        #    docker push ${{ steps.meta.outputs.labels }}:squashed 
