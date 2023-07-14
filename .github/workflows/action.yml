@@ -37,7 +37,7 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         outputs: type=docker,dest=/tmp/myimage.tar
     - name: Squash all docker layers
-      uses: FallenAngel97/squash-docker@v1.6
+      uses: FallenAngel97/squash-docker@v1.7
       with:
         tags: ${{ steps.meta.outputs.tags }}
       id: squash-step
