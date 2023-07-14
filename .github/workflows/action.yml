@@ -35,7 +35,7 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
     - name: Squash all docker layers
-      uses: FallenAngel97/squash-docker@v1.1
+      uses: FallenAngel97/squash-docker@v1.2
       with:
         tags: ${{ steps.meta.outputs.tags }}
       id: squash-step
