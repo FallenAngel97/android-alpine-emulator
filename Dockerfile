@@ -1,8 +1,7 @@
 FROM alvrme/alpine-android:android-33-jdk8
 COPY system.tar.xz /app/system.tar.xz
 RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
- && file /app/system.tar.xz \
- && apk add tar xz \
+ && apk add tar file xz \
  && tar -xf /app/system.tar.xz -C /app \
  && echo "y" | sdkmanager --licenses \
  && echo no | avdmanager create avd --force \
