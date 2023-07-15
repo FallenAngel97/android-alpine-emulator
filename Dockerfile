@@ -23,11 +23,10 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && rm -rf /var/cache/* \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-aarch64-headless \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-armel-headless \
- #&& ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/qt/lib/libQt5WebEngineCoreAndroidEmu.so \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/qt/lib/libQt5WebEngineCoreAndroidEmu.so.5 \
  #&& ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/vulkan/libvk_swiftshader.so \
  #&& ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/vulkan/glslangValidator.so \
  && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/userdata.img \
- && mv /app/userdata.img $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/userdata.img \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64-headless \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386-headless \
  && rm -rf $ANDROID_HOME/cmdline-tools \
@@ -37,5 +36,3 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/NOTICE.txt \
  && rm -rf /root/.wget-hsts \
  && cd .. && rm -rf upx-4.0.2-amd64_linux
-
-CMD "adb start-server"
