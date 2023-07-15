@@ -13,18 +13,17 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && sed -i '/hw.accelerometer=yes/c\hw.accelerometer=no' /root/.android/avd/lowEndOreo.avd/config.ini \
  && tar -xf upx-4.0.2-amd64_linux.tar.xz \
  && cd upx-4.0.2-amd64_linux \
- && ./upx --ultra-brute /opt/sdk/platform-tools/adb \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/emulator \
- && ./upx --ultra-brute /opt/sdk/build-tools/33.0.2/aapt2 \
- && ./upx --ultra-brute /opt/sdk/build-tools/33.0.2/aapt \
- && ./upx --ultra-brute /opt/sdk/build-tools/33.0.2/aidl \
- && ./upx --ultra-brute /opt/sdk/build-tools/33.0.2/split-select \
- && ./upx --ultra-brute /opt/sdk/build-tools/33.0.2/llvm-rs-cc \
- && ./upx --ultra-brute /opt/sdk/build-tools/33.0.2/dexdump \
- && ./upx --ultra-brute /opt/sdk/build-tools/33.0.2/zipalign \
- && rm -rf /opt/sdk/cmdline-tools/8.0/bin \
- && rm -rf /opt/sdk/build-tools/33.0.2/NOTICE.txt \
- && rm -rf /opt/sdk/platform-tools/NOTICE.txt \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu \
+ && rm -rf /opt/sdk/cmdline-tools \
+ && rm -rf /opt/sdk/build-tools \
+ && rm -rf /opt/sdk/platform-tools/NOTICE* \
+ && rm -rf /opt/sdk/platform-tools/fastboot \
+ && rm -rf /opt/sdk/platform-tools/sqlite3 \
+ && rm -rf /opt/sdk/platform-tools/LICENSE \
+ && rm -rf /opt/sdk/platforms/android-33/templates/NOTICE.txt \
+ && rm -rf /opt/sdk/system-images/android-26/google_apis/arm64-v8a/NOTICE.txt \
+ && rm -rf /root/.wget-hsts \
  && cd .. && rm -rf upx-4.0.2-amd64_linux
 
 CMD "adb start-server"
