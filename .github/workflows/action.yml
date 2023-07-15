@@ -32,7 +32,7 @@ jobs:
         DOCKER_BUILDKIT: 1
       with:
         load: true
-        push: false
+        push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         outputs: type=docker,dest=/tmp/myimage.tar

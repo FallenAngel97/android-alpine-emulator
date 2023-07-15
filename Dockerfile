@@ -20,6 +20,7 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64 \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386 \
  && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/data/app/ApiDemos \
+ && rm -rf /var/cache/* \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-aarch64-headless \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-armel-headless \
  #&& ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/qt/lib/libQt5WebEngineCoreAndroidEmu.so \
