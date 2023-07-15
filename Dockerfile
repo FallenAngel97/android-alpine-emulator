@@ -1,5 +1,7 @@
 FROM alvrme/alpine-android:android-33-jdk8
+COPY system.tar.xz /app/system.tar.xz
 RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
+ && tar -xf /app/system.tar.xz -C /app/system.img \
  && echo "y" | sdkmanager --licenses \
  && echo no | avdmanager create avd --force \
         --name lowEndOreo \
@@ -23,8 +25,9 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-aarch64-headless \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-armel-headless \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/qt/lib/libQt5WebEngineCoreAndroidEmu.so.5 \
- && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/vulkan/glslangValidator \
  && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/userdata.img \
+ && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/system.img \
+ && mv /app/system.img $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/system.img \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64-headless \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386-headless \
  && rm -rf $ANDROID_HOME/cmdline-tools \
