@@ -19,21 +19,21 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-armel \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64 \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386 \
- && rm -rf /opt/sdk/system-images/android-26/google_apis/arm64-v8a/data/app/ApiDemos \
+ && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/data/app/ApiDemos \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-aarch64-headless \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-armel-headless \
- && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/qt/lib/libQt5WebEngineCoreAndroidEmu.so \
- && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/vulkan/libvk_swiftshader.so \
- && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/vulkan/glslangValidator.so \
- && rm -rf /opt/sdk/system-images/android-26/google_apis/arm64-v8a/userdata.img \
- && mv /app/userdata.img /opt/sdk/system-images/android-26/google_apis/arm64-v8a/userdata.img \
+ #&& ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/qt/lib/libQt5WebEngineCoreAndroidEmu.so \
+ #&& ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/vulkan/libvk_swiftshader.so \
+ #&& ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/vulkan/glslangValidator.so \
+ && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/userdata.img \
+ && mv /app/userdata.img $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/userdata.img \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64-headless \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386-headless \
- && rm -rf /opt/sdk/cmdline-tools \
- && rm -rf /opt/sdk/build-tools \
- && rm -rf /opt/sdk/platform-tools/NOTICE* /opt/sdk/platform-tools/fastboot /opt/sdk/platform-tools/sqlite3 /opt/sdk/platform-tools/LICENSE \
- && rm -rf /opt/sdk/platforms/android-33/templates/NOTICE.txt \
- && rm -rf /opt/sdk/system-images/android-26/google_apis/arm64-v8a/NOTICE.txt \
+ && rm -rf $ANDROID_HOME/cmdline-tools \
+ && rm -rf $ANDROID_HOME/build-tools \
+ && rm -rf $ANDROID_HOME/platform-tools/NOTICE* $ANDROID_HOME/platform-tools/fastboot $ANDROID_HOME/platform-tools/sqlite3 $ANDROID_HOME/platform-tools/LICENSE \
+ && rm -rf $ANDROID_HOME/platforms/android-33/templates/NOTICE.txt \
+ && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/NOTICE.txt \
  && rm -rf /root/.wget-hsts \
  && cd .. && rm -rf upx-4.0.2-amd64_linux
 
