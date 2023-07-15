@@ -31,7 +31,7 @@ jobs:
       env:
         DOCKER_BUILDKIT: 1
       with:
-        load: true
+        load: false
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
