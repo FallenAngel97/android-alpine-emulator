@@ -35,7 +35,7 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-        outputs: type=docker,dest=/tmp/myimage.tar
+          #outputs: type=docker,dest=/tmp/myimage.tar
       # - name: Squash all docker layers
       #   uses: FallenAngel97/squash-docker@v2.0
       #   with:
