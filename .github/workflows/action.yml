@@ -1,14 +1,15 @@
 name: publish
 on: [push]
 jobs:
-  publish-hello-docker-image:
+  optimize-android-alpine-image:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout github repo (+ download lfs dependencies)
+      uses: actions/checkout@v2
       with:
         lfs: true
     - name: Checkout LFS objects
-      run: git lfs pull
+      run: git lfs checkout
     - name: Generate Docker metadata
       id: meta
       uses: docker/metadata-action@v3
