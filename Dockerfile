@@ -14,7 +14,14 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && tar -xf upx-4.0.2-amd64_linux.tar.xz \
  && cd upx-4.0.2-amd64_linux \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/emulator \
- && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-aarch64 \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-armel \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64 \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386 \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-aarch64-headless \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-armel-headless \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64-headless \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386-headless \
  && rm -rf /opt/sdk/cmdline-tools \
  && rm -rf /opt/sdk/build-tools \
  && rm -rf /opt/sdk/platform-tools/NOTICE* \
