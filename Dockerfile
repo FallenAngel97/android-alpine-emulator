@@ -1,5 +1,4 @@
 FROM alvrme/alpine-android:android-33-jdk8
-COPY userdata.img /app/userdata.img
 RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && echo "y" | sdkmanager --licenses \
  && echo no | avdmanager create avd --force \
