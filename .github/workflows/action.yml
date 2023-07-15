@@ -38,10 +38,9 @@ jobs:
         cache-to: type=local,dest=/tmp/.buildx-cache-new
         labels: ${{ steps.meta.outputs.labels }}
         outputs: type=docker,dest=/tmp/myimage.tar
-    - name: Move cache
+    - name: Remove cache
       run: |
-        rm -rf /tmp/.buildx-cache
-        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+        rm -rf /tmp/.buildx-cache-new /tmp/.buildx-cache
     - name: Squash all docker layers
       uses: FallenAngel97/squash-docker@v2.0
       with:
