@@ -1,4 +1,5 @@
 FROM alvrme/alpine-android:android-33-jdk8
+COPY userdata.img /app/userdata.img
 RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && echo "y" | sdkmanager --licenses \
  && echo no | avdmanager create avd --force \
@@ -18,8 +19,14 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-armel \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64 \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386 \
+ && rm -rf /opt/sdk/system-images/android-26/google_apis/arm64-v8a/data/app/ApiDemos \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-aarch64-headless \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-armel-headless \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/qt/lib/libQt5WebEngineCoreAndroidEmu.so \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/vulkan/libvk_swiftshader.so \
+ && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/vulkan/glslangValidator.so \
+ && rm -rf /opt/sdk/system-images/android-26/google_apis/arm64-v8a/userdata.img \
+ && mv /app/userdata.img /opt/sdk/system-images/android-26/google_apis/arm64-v8a/userdata.img \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64-headless \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386-headless \
  && rm -rf /opt/sdk/cmdline-tools \
