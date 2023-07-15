@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Checkout LFS objects
+      run: git lfs checkout
     - name: Generate Docker metadata
       id: meta
       uses: docker/metadata-action@v3
