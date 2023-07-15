@@ -24,10 +24,7 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;arm64-v8a' \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386-headless \
  && rm -rf /opt/sdk/cmdline-tools \
  && rm -rf /opt/sdk/build-tools \
- && rm -rf /opt/sdk/platform-tools/NOTICE* \
- && rm -rf /opt/sdk/platform-tools/fastboot \
- && rm -rf /opt/sdk/platform-tools/sqlite3 \
- && rm -rf /opt/sdk/platform-tools/LICENSE \
+ && rm -rf /opt/sdk/platform-tools/NOTICE* /opt/sdk/platform-tools/fastboot /opt/sdk/platform-tools/sqlite3 /opt/sdk/platform-tools/LICENSE \
  && rm -rf /opt/sdk/platforms/android-33/templates/NOTICE.txt \
  && rm -rf /opt/sdk/system-images/android-26/google_apis/arm64-v8a/NOTICE.txt \
  && rm -rf /root/.wget-hsts \
