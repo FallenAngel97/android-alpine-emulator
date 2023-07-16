@@ -27,7 +27,7 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;x86_64' \
  && rm -rf $ANDROID_HOME/emulator/NOTICE* \
  && rm -rf $ANDROID_HOME/emulator/LICENSE \
  && rm -rf $ANDROID_HOME/extras \
- && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/data/app/ApiDemos \
+ && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/x86_64/data/app/ApiDemos \
  && rm -rf /var/cache/* \
  && chmod +x $ANDROID_HOME/emulator/lib64/gles_mesa/libGL.so \
  && chmod +x $ANDROID_HOME/emulator/lib64/gles_mesa/libGL.so.1 \
@@ -36,16 +36,16 @@ RUN sdkmanager --install 'system-images;android-26;google_apis;x86_64' \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/qt/lib/libQt5WebEngineCoreAndroidEmu.so.5 \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/gles_mesa/libGL.so \
  && ./upx --ultra-brute $ANDROID_HOME/emulator/lib64/gles_mesa/libGL.so.1 \
- && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/userdata.img \
- && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/system.img \
- && mv /app/system.img $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/system.img \
+ && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/x86_64/userdata.img \
+ #&& rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/system.img \
+ #&& mv /app/system.img $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/system.img \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-x86_64-headless \
  && rm -rf $ANDROID_HOME/emulator/qemu/linux-x86_64/qemu-system-i386-headless \
  && rm -rf $ANDROID_HOME/cmdline-tools \
  && rm -rf $ANDROID_HOME/build-tools \
  && rm -rf $ANDROID_HOME/platform-tools/NOTICE* $ANDROID_HOME/platform-tools/fastboot $ANDROID_HOME/platform-tools/sqlite3 $ANDROID_HOME/platform-tools/LICENSE \
  && rm -rf $ANDROID_HOME/platforms/android-33/templates/NOTICE.txt \
- && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/arm64-v8a/NOTICE.txt \
+ && rm -rf $ANDROID_HOME/system-images/android-26/google_apis/x86_64/NOTICE.txt \
  && rm -rf /root/.wget-hsts \
  && apk del tar file xz git busybox \
  && cd .. && rm -rf upx-4.0.2-amd64_linux*
