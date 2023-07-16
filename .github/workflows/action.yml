@@ -6,10 +6,6 @@ jobs:
     steps:
     - name: Checkout github repo (+ download lfs dependencies)
       uses: actions/checkout@v2
-      with:
-        lfs: true
-    - name: Checkout LFS objects
-      run: git lfs checkout
     - name: Generate Docker metadata
       id: meta
       uses: docker/metadata-action@v3
@@ -38,7 +34,7 @@ jobs:
       with:
         load: false
         push: true
-  #     tags: ${{ steps.meta.outputs.tags }}
+        tags: ${{ steps.meta.outputs.tags }}
   #     cache-from: type=local,src=/tmp/.buildx-cache
   #     cache-to: type=local,dest=/tmp/.buildx-cache-new
   #     labels: ${{ steps.meta.outputs.labels }}
